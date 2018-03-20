@@ -1,5 +1,5 @@
 <template>
-    <button v-if="enabled" :class="['dg-btn', 'dg-btn--ok', {'dg-btn--loading': loading}, {'dg-pull-right': !options.reverse}]"
+    <button v-if="enabled" :class="['dg-btn', 'dg-btn--ok', {'dg-btn--loading': loading}, {'dg-pull-right': !options.reverse}, customClasses('okButton')]"
             @click.prevent="proceed()" ref="btn" :disabled="is_disabled">
         <span class="dg-btn-content">
             <slot></slot>
@@ -12,6 +12,7 @@
 <script>
     import BtnLoader from './btn-loader.vue'
     import {DIALOG_TYPES, CONFIRM_TYPES, ANIMATION_TYPES} from '../js/constants'
+    import CustomClassMixin from '../js/mixins/class-mixin.js'
 
     export default {
         data(){
@@ -55,6 +56,7 @@
                 }
             },
         },
+        mixins: [CustomClassMixin],
         components: {BtnLoader}
     }
 </script>

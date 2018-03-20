@@ -175,8 +175,20 @@
                     })
             },
             showBasicDialogCloseClickOutside(){
-                this.$dialog.confirm(trans('messages.basic'), {
-                    backdropClose: true
+                var message = {
+                        title: 'Confirm',
+                        body: trans('messages.basic')
+                }
+                //Adding experimental custom css classes to named components
+                this.$dialog.confirm(message, {
+                    backdropClose: true,
+                    customClasses: {
+                        okButton: 'blue',
+                        cancelButton: 'gray',
+                        dialogTitle: 'title-customized',
+                        body: 'my-body-class',
+                        mainContent: 'delete-mode'
+                    }
                 }).then(() => {
                         this.$notify({type: 'success', text: trans('messages.click_continue')})
                     })

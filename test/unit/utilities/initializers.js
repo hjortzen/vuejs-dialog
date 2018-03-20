@@ -24,6 +24,13 @@ export function setupVmWithLocalVue() {
             triggerConfirm(){
                 return this.$dialog.confirm('Please confirm')
             },
+            triggerCustomClasses() {
+                return this.$dialog.confirm('Custom classes',{
+                    customClasses: {
+                        okButton: 'testing-class'
+                    }
+                })
+            },
             clickDialogBtn
         }
     })).$mount(node)
